@@ -9,3 +9,19 @@
     display: inline-block;
     background: linear-gradient(to right, #151515 0%, rgba(21, 21, 21, 0) 100%);
 }
+
+.my-logo{
+    font-family: 'Metal Mania', cursive;
+    letter-spacing: 3px;
+    color: red;
+    font-size: 30px;
+}
+
+.items li a{
+    font-family: 'Oswald', sans-serif;
+}
+
+.laptop{
+    background-color: orange;
+    border-radius: 50px;
+}

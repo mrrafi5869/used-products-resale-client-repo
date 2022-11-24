@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {  } from 'react-icons/fa';
+import './NavbarBanner.css';
+import laptop from '../../../images/laptop-removebg.png';
+import { FaHome, FaBookmark, FaFacebookMessenger, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const NavbarBanner = ({ imageData }) => {
   const { image, prev, id, next } = imageData;
@@ -10,9 +12,9 @@ const NavbarBanner = ({ imageData }) => {
       <div className="carousel-img">
         <img src={image} alt="" className="w-screen h-[900px] rounded-xl" />
       </div>
-      <div className="absolute flex justify-end transform -translate-y-1/2 left-24 top-1/4">
+      <div className="absolute lg:left-52 top-11 w-9/12">
         {/* navbar start */}
-        <div className="navbar bg-base-100">
+        <div className="navbar text-white">
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,51 +38,54 @@ const NavbarBanner = ({ imageData }) => {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <Link>Home</Link>
+                  <Link className="hover:bg-black hover:text-white"><FaHome></FaHome>Home</Link>
                 </li>
                 <li>
-                  <Link>Bookmarks</Link>
+                  <Link><FaBookmark></FaBookmark>Bookmark</Link>
                 </li>
                 <li>
-                  <Link>Message</Link>
+                  <Link><FaFacebookMessenger></FaFacebookMessenger>Message</Link>
                 </li>
               </ul>
             </div>
-            <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+            <Link className="btn btn-ghost normal-case text-xl my-logo">AutoParts</Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal p-0">
+            <ul className="menu menu-horizontal p-0 items font-bold">
               <li>
-                <Link>Item 1</Link>
+                <Link>Home</Link>
               </li>
               <li>
-                <Link>Item 3</Link>
+                <Link>Bookmark</Link>
+              </li>
+              <li>
+                <Link>Message</Link>
               </li>
             </ul>
           </div>
           <div className="navbar-end">
-            <Link className="btn">Get started</Link>
+            <Link className="btn rounded-full mr-3"><FaFacebook></FaFacebook></Link>
+            <Link className="btn rounded-full mr-9"><FaInstagram></FaInstagram></Link>
+            <Link className="btn rounded-full bg-red-500">Purchase Now</Link>
           </div>
         </div>
         {/* navbar end */}
       </div>
-      <div className="absolute flex justify-end transform -translate-y-1/2 left-24 top-1/2 w-2/5">
-        <p className="text-white text-xl">
-          There are many variations of passages of available, but the majority
-          have suffered alteration in some form
-        </p>
+      <div className="absolute flex justify-center transform -translate-y-1/2 left-24 top-60 w-full">
+        <h2 className="text-white text-5xl uppercase">
+          <p className="font-bold"><span className="text-yellow-400">Cars part store</span> & Auto Services</p><p className="font-serif mt-6">Welcome to AutoParts</p>
+        </h2>
       </div>
-      <div className="absolute flex justify-start transform -translate-y-1/2 left-24 top-3/4 w-2/5">
-        <button className="btn btn-warning mr-5">Warning</button>
-        <button className="btn btn-outline btn-success">Success</button>
+      <div className="absolute flex justify-start transform -translate-y-1/2 left-1/3 top-3/4 w-2/5">
+        <img className="laptop" src={laptop} alt="" />
       </div>
       <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 bottom-0">
-        <Link href={`#slide${prev}`} className="btn btn-circle mr-5">
+        <a href={`#slide${prev}`} className="btn btn-circle mr-5">
           ❮
-        </Link>
-        <Link href={`#slide${next}`} className="btn btn-circle">
+        </a>
+        <a href={`#slide${next}`} className="btn btn-circle">
           ❯
-        </Link>
+        </a>
       </div>
     </div>
   );
