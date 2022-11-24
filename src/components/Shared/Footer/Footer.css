@@ -1,0 +1,21 @@
+.social-media li{
+    font-size: 30px;
+}
+.instagram{
+    background-image: linear-gradient(to bottom , rgb(64, 93, 230), rgb(88, 81, 219), rgb(131, 58, 180), rgb(193, 53, 132), rgb(225, 48, 108), rgb(253, 29, 29), rgb(245, 96, 64), rgb(247, 119, 55), rgb(252, 175, 69), rgb(255, 220, 128));
+}
+.whatsapp{
+    /* background-image: linear-gradient(to right, rgb(37, 211, 102)); */
+    color: rgb(37, 211, 102);
+}
+.paypal{
+    background-color: #3b7bbf;
+}
+
+.visa{
+    background-color: rgb(26, 31, 113);
+}
+
+.master{
+
+}
