@@ -17,13 +17,15 @@ const Register = () => {
     const email = form.email.value;
     const name = form.name.value;
     const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
+    const seller = form.seller.value;
+    const buyer = form.buyer.value;
+    // const confirmPassword = form.confirmPassword.value;
 
     emailLogin(email, password)
     .then(result => {
       const user = result.user;
       console.log(user);
-      handleUpdateProfile(name);
+      handleUpdateProfile(name, email, seller, buyer);
       navigate('/');
     })
     .catch(err => console.error(err));
@@ -39,13 +41,31 @@ const Register = () => {
     .catch(err => console.error(err));
   };
 
-  const handleUpdateProfile = (name) => {
+  const handleUpdateProfile = (name, email, seller, buyer) => {
     const profile = {
       displayName: name,
     }
     updateUser(profile)
-    .then(() => {})
+    .then(() => {
+      saveUser(name, email, seller, buyer)
+    })
     .catch(err => console.error(err));
+  }
+
+  const saveUser = (name, email, seller, buyer) => {
+    const user = {
+      name,
+      email,
+      seller,
+      buyer
+    }
+    fetch('http://localhost:5000/user', {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
   }
 
   return (
@@ -109,6 +129,16 @@ const Register = () => {
                   className="input input-bordered"
                 />
               </label>
+              <div className="mt-5 flex items-center justify-between">
+                <p className="flex items-center">
+                <input type="radio" id="child" name="seller" value="seller" className="radio mr-2"/>
+                <label for="child">Seller</label><br/>
+                </p>
+                <p className="flex items-center">
+                <input type="radio" id="adult" name="buyer" value="buyer" className="radio mr-2" checked/>
+                <label for="adult">buyer</label>
+                </p>
+              </div>
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>

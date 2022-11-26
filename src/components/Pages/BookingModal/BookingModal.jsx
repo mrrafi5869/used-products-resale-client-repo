@@ -1,9 +1,36 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const BookingModal = ({img, name, location}) => {
+const BookingModal = ({name, location, resalePrice}) => {
     const {user} = useContext(AuthContext);
-    const handleBooking = () => {
+    const handleBooking = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.carName.value;
+        const price = form.price.value;
+        const singleLocation = form.singleLocation.value;
+        const phone = form.phone.value;
+        const booking = {
+            name,
+            price,
+            location: singleLocation,
+            phone
+        }
+        fetch('http://localhost:5000/bookingCar',{
+            method: "POST",
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                toast.success(`Thanks for ordered the ${name}.You will get it in 7 Days.`)
+            }
+        })
 
     }
     return (
@@ -21,11 +48,19 @@ const BookingModal = ({img, name, location}) => {
           <form onSubmit={handleBooking} className="grid grid-cols-1 gap-3 mt-10">
             <input
               type="text"
+              name='carName'
               value={name}
               disabled
               className="input w-full input-bordered"
             />
-            <select name="slot" className="select select-bordered w-full">
+            <input
+              type="text"
+              name='price'
+              value={"Price: "+ resalePrice}
+              disabled
+              className="input w-full input-bordered"
+            />
+            <select name="singleLocation" className="select select-bordered w-full">
               {
                 location.map((singleLocation, index) => <option key={index} value={singleLocation}>{singleLocation}</option>)
               }

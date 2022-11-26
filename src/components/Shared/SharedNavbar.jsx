@@ -16,7 +16,7 @@ const SharedNavbar = () => {
         <div className="navbar text-white">
           <div className="navbar-start">
             <div className="dropdown">
-              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <label tabIndex={1} className="btn btn-ghost lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 text-black"
@@ -55,10 +55,13 @@ const SharedNavbar = () => {
           <div className="navbar-end">
           <ul className="menu menu-horizontal p-0 items font-bold hidden lg:flex">
               <li>
+                <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/'>Home</Link>
+              </li>
+              <li>
                 <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/blog'>Blog</Link>
               </li>
               <li>
-                <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/'>Home</Link>
+                <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/dashboard'>Dashboard</Link>
               </li>
               {
                 user?.uid ? <li>
@@ -71,6 +74,22 @@ const SharedNavbar = () => {
               }
             </ul>
             <Link className="btn rounded-full bg-blue-500">Purchase Now</Link>
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-black"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </label>
           </div>
         </div>
     );

@@ -5,6 +5,7 @@ import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 import Home from "../components/Pages/Home/Home/Home";
 import Login from "../components/Pages/Login/Login";
 import Register from "../components/Pages/Login/Register";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/dashboard',
+                element: <DashboardLayout></DashboardLayout>
             },
             {
                 path: '/allCars/:id',

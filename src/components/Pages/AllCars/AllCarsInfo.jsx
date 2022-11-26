@@ -49,6 +49,7 @@ const AllCarsInfo = ({singleProduct}) => {
         img={img}
         name={name}
         location={location}
+        resalePrice={resalePrice}
       ></BookingModal>
     </div>
   );
