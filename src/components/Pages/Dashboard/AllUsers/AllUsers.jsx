@@ -1,7 +1,15 @@
+import { useQuery } from "@tanstack/react-query";
+import { FaTrash } from 'react-icons/fa';
 
 const AllUsers = () => {
-    
-    
+    const {data: allUsers = [] , refetch} = useQuery({
+        queryKey: ["allUsers"],
+        queryFn: async () => {
+            const res = await fetch("http://localhost:5000/allUsers");
+            const data = await res.json();
+            return data;
+        }
+    });
 
   return (
     <div className="overflow-x-auto">
@@ -16,19 +24,23 @@ const AllUsers = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>
-              <div className="avatar">
-                <div className="w-24 rounded-full">
-                  <img src="{doctor.image}" alt="" />
-                </div>
-              </div>
-            </td>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
+            {
+                allUsers.map((user, index) => <tr key={user._id}>
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="avatar">
+                        <div className="w-24 rounded-full">
+                          <img src={user.img} alt="" />
+                        </div>
+                      </div>
+                    </td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td><button className="btn btn-xs btn-danger"><FaTrash></FaTrash></button></td>
+                  </tr>
+                  )
+            }
+          
         </tbody>
       </table>
     </div>

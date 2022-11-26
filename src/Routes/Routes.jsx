@@ -1,6 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllCars from "../components/Pages/AllCars/AllCars";
 import Blog from "../components/Pages/Blog/Blog";
+import AddProduct from "../components/Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyers from "../components/Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../components/Pages/Dashboard/AllSellers/AllSellers";
+import AllUsers from "../components/Pages/Dashboard/AllUsers/AllUsers";
+import MyOrders from "../components/Pages/Dashboard/MyOrders/MyOrders";
 import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 import Home from "../components/Pages/Home/Home/Home";
 import Login from "../components/Pages/Login/Login";
@@ -30,10 +35,6 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
-                path: '/dashboard',
-                element: <DashboardLayout></DashboardLayout>
-            },
-            {
                 path: '/allCars/:id',
                 element: <AllCars></AllCars>,
                 loader: ({params}) => fetch(`http://localhost:5000/allCars/${params.id}`)
@@ -43,5 +44,32 @@ export const router = createBrowserRouter([
                 element: <ErrorPage></ErrorPage>
             },
         ]
-    }
+    },
+        {
+            path: '/dashboard',
+            element: <DashboardLayout></DashboardLayout>,
+            children: [
+                {
+                    path: "/dashboard",
+                    element: <AddProduct></AddProduct>
+                },
+                {
+                    path: '/dashboard/myOrders',
+                    element: <MyOrders></MyOrders>
+                },
+                {
+                    path: "/dashboard/allUsers",
+                    element: <AllUsers></AllUsers>
+                },
+                {
+                    path: "/dashboard/allSellers",
+                    element: <AllSellers></AllSellers>
+                },
+                {
+                    path: "/dashboard/allBuyers",
+                    element: <AllBuyers></AllBuyers>
+                },
+                
+            ]            
+        },
 ])
