@@ -36,7 +36,7 @@ const SharedNavbar = () => {
                 tabIndex={0}
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
+                {/* <li>
                   <Link className="hover:bg-black hover:text-white text-black font-semibold"><FaHome></FaHome>Home</Link>
                 </li>
                 <li>
@@ -44,7 +44,28 @@ const SharedNavbar = () => {
                 </li>
                 <li>
                   <Link className="hover:bg-black hover:text-white text-black font-semibold"><FaFacebookMessenger></FaFacebookMessenger>Message</Link>
-                </li>
+                </li> */}
+                <li>
+                <Link className="hover:bg-black hover:text-white text-black font-semibold" to='/'>Home</Link>
+              </li>
+              <li>
+                <Link className="hover:bg-black hover:text-white text-black font-semibold" to='/blog'>Blog</Link>
+              </li>
+              {
+                user?.uid ? 
+                <>
+              <li>
+                <Link className="hover:bg-black hover:text-white text-black font-semibold" to='/dashboard'>Dashboard</Link>
+              </li>
+                  <li>
+                <Link onClick={handleLogOut} className="hover:bg-black hover:text-white text-black font-semibold" to='/login'>LogOut</Link>
+              </li>
+                </>
+              :
+              <li>
+                <Link className="hover:bg-black hover:text-white text-black font-semibold">Login</Link>
+              </li>
+              }
               </ul>
             </div>
             <Link className="btn btn-ghost normal-case text-xl my-logo text-blue-500" to='/'>AutoParts</Link>
@@ -60,13 +81,16 @@ const SharedNavbar = () => {
               <li>
                 <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/blog'>Blog</Link>
               </li>
+              {
+                user?.uid ? 
+                <>
               <li>
                 <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/dashboard'>Dashboard</Link>
               </li>
-              {
-                user?.uid ? <li>
+                  <li>
                 <Link onClick={handleLogOut} className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/login'>LogOut</Link>
               </li>
+                </>
               :
               <li>
                 <Link className='bg-gray-700 rounded-md mr-5 hover:bg-blue-500 hover:' to='/login'>Login</Link>

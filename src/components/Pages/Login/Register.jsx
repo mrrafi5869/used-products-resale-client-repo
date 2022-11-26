@@ -1,6 +1,5 @@
-import { data } from "autoprefixer";
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -11,21 +10,24 @@ const Register = () => {
   const navigate = useNavigate();
   const { googleSingIn, emailLogin, updateUser } = useContext(AuthContext);
 
+  const [topping, setTopping] = useState("")
+
+  const onOptionChange = e => {
+    setTopping(e.target.value)
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const name = form.name.value;
+    const user = topping;
     const password = form.password.value;
-    const seller = form.seller.value;
-    const buyer = form.buyer.value;
     // const confirmPassword = form.confirmPassword.value;
 
     emailLogin(email, password)
     .then(result => {
-      const user = result.user;
-      console.log(user);
-      handleUpdateProfile(name, email, seller, buyer);
+      handleUpdateProfile(name, email, user);
       navigate('/');
     })
     .catch(err => console.error(err));
@@ -41,30 +43,29 @@ const Register = () => {
     .catch(err => console.error(err));
   };
 
-  const handleUpdateProfile = (name, email, seller, buyer) => {
+  const handleUpdateProfile = (name, email, user) => {
     const profile = {
       displayName: name,
     }
     updateUser(profile)
     .then(() => {
-      saveUser(name, email, seller, buyer)
+      saveUser(name, email, user)
     })
     .catch(err => console.error(err));
   }
 
-  const saveUser = (name, email, seller, buyer) => {
-    const user = {
+  const saveUser = (name, email, user) => {
+    const userInfo = {
       name,
       email,
-      seller,
-      buyer
+      user
     }
     fetch('http://localhost:5000/user', {
       method: "POST",
       headers: {
         'content-type': 'application/json'
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(userInfo)
     })
   }
 
@@ -131,11 +132,11 @@ const Register = () => {
               </label>
               <div className="mt-5 flex items-center justify-between">
                 <p className="flex items-center">
-                <input type="radio" id="child" name="seller" value="seller" className="radio mr-2"/>
+                <input onChange={onOptionChange} type="radio" id="child" name="seller" value="seller" className="radio mr-2" checked={topping === "seller"}/>
                 <label for="child">Seller</label><br/>
                 </p>
                 <p className="flex items-center">
-                <input type="radio" id="adult" name="buyer" value="buyer" className="radio mr-2" checked/>
+                <input onChange={onOptionChange} type="radio" id="adult" name="buyer" value="buyer" className="radio mr-2" checked={topping === "buyer"}/>
                 <label for="adult">buyer</label>
                 </p>
               </div>
