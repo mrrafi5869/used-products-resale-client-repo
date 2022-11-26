@@ -8,9 +8,9 @@ const MyOrders = () => {
     const url = `http://localhost:5000/myOrders?email=${user?.email}`;
     const {data: myOrders = [], refetch} = useQuery({
         queryKey: ["myOrders", user?.email],
-        queryFn: () => {
-            const res = fetch(url);
-            const data = res.json();
+        queryFn: async () => {
+            const res = await fetch(url);
+            const data = await res.json();
             return data;
         }
     })

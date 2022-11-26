@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "../components/Pages/AdminRoute/AdminRoute";
 import AllCars from "../components/Pages/AllCars/AllCars";
 import Blog from "../components/Pages/Blog/Blog";
 import AddProduct from "../components/Pages/Dashboard/AddProduct/AddProduct";
@@ -10,6 +11,7 @@ import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 import Home from "../components/Pages/Home/Home/Home";
 import Login from "../components/Pages/Login/Login";
 import Register from "../components/Pages/Login/Register";
+import PrivateRoute from "../components/Pages/PrivateRoute/PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 
@@ -47,7 +49,7 @@ export const router = createBrowserRouter([
     },
         {
             path: '/dashboard',
-            element: <DashboardLayout></DashboardLayout>,
+            element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
             children: [
                 {
                     path: "/dashboard",
@@ -59,15 +61,15 @@ export const router = createBrowserRouter([
                 },
                 {
                     path: "/dashboard/allUsers",
-                    element: <AllUsers></AllUsers>
+                    element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
                 },
                 {
                     path: "/dashboard/allSellers",
-                    element: <AllSellers></AllSellers>
+                    element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
                 },
                 {
                     path: "/dashboard/allBuyers",
-                    element: <AllBuyers></AllBuyers>
+                    element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
                 },
                 
             ]            

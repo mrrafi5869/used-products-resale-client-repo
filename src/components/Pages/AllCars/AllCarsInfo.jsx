@@ -4,7 +4,7 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import BookingModal from "../BookingModal/BookingModal";
 
 const AllCarsInfo = ({singleProduct}) => {
-    const {id, img, name, location, resalePrice, originalPrice, used} = singleProduct;
+    const {id, img, name,condition, location, resalePrice, originalPrice, used} = singleProduct;
     const {user} = useContext(AuthContext);
 
     const handleBooking = id => {
@@ -17,16 +17,17 @@ const AllCarsInfo = ({singleProduct}) => {
         <img src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="text-2xl font-semibold font-sans">Seller: {user?.displayName}</h2>
         <h2 className="card-title">
           {name}
         </h2>
+        <h2 className="text-2xl font-semibold font-sans">Seller: {user?.displayName}</h2>
+        <p className="text-xl font-semibold">Condition: {condition}</p>
         <span className="font-semibold flex items-center"><FaMapMarkerAlt className="mr-2 text-blue-400"></FaMapMarkerAlt>Location </span>
         <select name="slot" className="select select-bordered w-full">
               {
                 location.map((singleLocation, index) => <option key={index} value={singleLocation}>{singleLocation}</option>)
               }
-            </select>
+        </select>
       </div>
       <div className="flex stats shadow bg-lime-50 rounded-sm">
       <div className="stat place-items-center text-sm">

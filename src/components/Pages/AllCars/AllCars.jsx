@@ -7,7 +7,7 @@ const AllCars = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-9/12 mx-auto my-16'>
             {
-                products.map(singleProduct => <AllCarsInfo
+                products?.map(singleProduct => <AllCarsInfo
                     key={singleProduct._id}
                     singleProduct={singleProduct}
                 ></AllCarsInfo>)
