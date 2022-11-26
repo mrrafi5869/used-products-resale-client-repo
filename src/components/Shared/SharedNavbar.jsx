@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { FaBookmark, FaFacebookMessenger, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 

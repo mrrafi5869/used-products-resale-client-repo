@@ -82,7 +82,7 @@ const Login = () => {
             </div>
           </form>
           <div>
-            <p className='text-gray-500 text-center'>Or SignUp using</p>
+          <div className="divider w-64 mx-auto">OR</div>
             <ul className='flex justify-center mb-10 mt-5'>
                 <li className='mr-3 text-2xl text-blue-400 cursor-pointer' onClick={handleGoogleSignIn}><FaGoogle></FaGoogle></li>
                 <li className='mr-3 text-2xl text-gray-500 cursor-pointer'><FaGithub></FaGithub></li>

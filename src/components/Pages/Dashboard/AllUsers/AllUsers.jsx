@@ -11,21 +11,35 @@ const AllUsers = () => {
         }
     });
 
+    const handleDeleteUser = id => {
+        fetch(`http://localhost:5000/user/${id}`, {
+          method: "DELETE",
+        })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+          refetch();
+        })
+    }
+
   return (
-    <div className="overflow-x-auto">
+    <>
+      {
+        allUsers?.length > 0 && 
+        <div className="overflow-x-auto">
       <table className="table w-full">
         <thead>
           <tr>
-            <th></th>
+            <th>Num</th>
+            <th>Image</th>
             <th>Name</th>
-            <th>Profile</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>Email</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
             {
-                allUsers.map((user, index) => <tr key={user._id}>
+                allUsers?.map((user, index) => <tr key={user._id}>
                     <th>{index + 1}</th>
                     <td>
                       <div className="avatar">
@@ -36,7 +50,7 @@ const AllUsers = () => {
                     </td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
-                    <td><button className="btn btn-xs btn-danger"><FaTrash></FaTrash></button></td>
+                    <td><button onClick={() => handleDeleteUser(user._id)} className="btn btn-xs btn-danger"><FaTrash></FaTrash></button></td>
                   </tr>
                   )
             }
@@ -44,6 +58,8 @@ const AllUsers = () => {
         </tbody>
       </table>
     </div>
+      }
+    </>
   );
 };
 

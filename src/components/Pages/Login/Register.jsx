@@ -8,9 +8,10 @@ const googleProvider = new GoogleAuthProvider();
 
 const Register = () => {
   const navigate = useNavigate();
+  const imageHost = process.env.REACT_APP_IMGBB_KEY;
   const { googleSingIn, emailLogin, updateUser } = useContext(AuthContext);
 
-  const [topping, setTopping] = useState("")
+  const [topping, setTopping] = useState("buyer")
 
   const onOptionChange = e => {
     setTopping(e.target.value)
@@ -23,14 +24,30 @@ const Register = () => {
     const name = form.name.value;
     const user = topping;
     const password = form.password.value;
-    // const confirmPassword = form.confirmPassword.value;
-
-    emailLogin(email, password)
+    const image = form.image.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageHost}`
+    
+    fetch(url, {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      const upImg = data.data.display_url;
+      console.log(upImg);
+      emailLogin(email, password)
     .then(result => {
-      handleUpdateProfile(name, email, user);
+      console.log(result.user);
+      handleUpdateProfile(name, email, user, upImg);
       navigate('/');
     })
     .catch(err => console.error(err));
+    })
+    // const confirmPassword = form.confirmPassword.value;
+
+    
   }
 
   const handleGoogleSignIn = () => {
@@ -43,22 +60,24 @@ const Register = () => {
     .catch(err => console.error(err));
   };
 
-  const handleUpdateProfile = (name, email, user) => {
+  const handleUpdateProfile = (name, email, user, upImg) => {
     const profile = {
+      photoURL: upImg,
       displayName: name,
     }
     updateUser(profile)
     .then(() => {
-      saveUser(name, email, user)
+      saveUser(name, email, user, upImg)
     })
     .catch(err => console.error(err));
   }
 
-  const saveUser = (name, email, user) => {
+  const saveUser = (name, email, user, upImg) => {
     const userInfo = {
       name,
       email,
-      user
+      user,
+      img: upImg
     }
     fetch('http://localhost:5000/user', {
       method: "POST",
@@ -119,6 +138,20 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
+                <span className="label-text">Profile Picture</span>
+              </label>
+              <label className="input-group">
+                <span className="w-24">Image</span>
+                <input
+                  type="file"
+                  name="image"
+                  placeholder="Your image"
+                  className="input input-bordered"
+                />
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="label">
                 <span className="label-text">Confirm Password</span>
               </label>
               <label className="input-group">
@@ -133,11 +166,11 @@ const Register = () => {
               <div className="mt-5 flex items-center justify-between">
                 <p className="flex items-center">
                 <input onChange={onOptionChange} type="radio" id="child" name="seller" value="seller" className="radio mr-2" checked={topping === "seller"}/>
-                <label for="child">Seller</label><br/>
+                <label htmlFor="child">Seller</label><br/>
                 </p>
                 <p className="flex items-center">
                 <input onChange={onOptionChange} type="radio" id="adult" name="buyer" value="buyer" className="radio mr-2" checked={topping === "buyer"}/>
-                <label for="adult">buyer</label>
+                <label htmlFor="adult">buyer</label>
                 </p>
               </div>
             </div>
@@ -146,7 +179,7 @@ const Register = () => {
             </div>
           </form>
           <div>
-            <p className="text-gray-500 text-center">Or SignUp using</p>
+          <div className="divider w-64 mx-auto">OR</div>
             <ul className="flex justify-center my-5">
               <li className="mr-3 text-2xl text-blue-500">
                 <FaGoogle onClick={handleGoogleSignIn} className="cursor-pointer"></FaGoogle>
