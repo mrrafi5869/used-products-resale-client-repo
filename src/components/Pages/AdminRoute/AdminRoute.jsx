@@ -10,7 +10,9 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-  
+    return <div>
+        <button className="btn btn-square loading"></button>
+    </div>
   }
 
   if (user && isAdmin) {
