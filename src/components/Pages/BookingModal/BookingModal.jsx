@@ -8,6 +8,7 @@ const BookingModal = ({name, location, resalePrice}) => {
         event.preventDefault();
         const form = event.target;
         const name = form.carName.value;
+        const email = form.email.value;
         const price = form.price.value;
         const singleLocation = form.singleLocation.value;
         const phone = form.phone.value;
@@ -15,7 +16,8 @@ const BookingModal = ({name, location, resalePrice}) => {
             name,
             price,
             location: singleLocation,
-            phone
+            phone,
+            email
         }
         fetch('http://localhost:5000/bookingCar',{
             method: "POST",
