@@ -1,4 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
+import AllCars from "../components/Pages/AllCars/AllCars";
+import Blog from "../components/Pages/Blog/Blog";
+import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
+import Home from "../components/Pages/Home/Home/Home";
+import Login from "../components/Pages/Login/Login";
+import Register from "../components/Pages/Login/Register";
 import Main from "../Layout/Main";
 
 export const router = createBrowserRouter([
@@ -8,8 +14,29 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                
-            }
+                element: <Home></Home>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+            {
+                path: '/allCars/:id',
+                element: <AllCars></AllCars>,
+                loader: ({params}) => fetch(`http://localhost:5000/allCars/${params.id}`)
+            },
+            {
+                path: '*',
+                element: <ErrorPage></ErrorPage>
+            },
         ]
     }
 ])

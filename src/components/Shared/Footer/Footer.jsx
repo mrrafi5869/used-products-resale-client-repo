@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Footer.css'
-import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaPaypal, FaCcVisa, FaCcMastercard } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp, FaPaypal, FaCcVisa, FaCcMastercard, FaArrowDown } from 'react-icons/fa';
 
 const Footer = () => {
   return (
     <div className="bg-gray-800">
-      <footer className="footer p-10 text-white w-9/12 mx-auto">
+      <footer className="footer p-10 text-white w-4/5 mx-auto">
         <div>
           <span className="footer-title">Services</span>
           <Link className="link link-hover">Branding</Link>
@@ -26,6 +26,18 @@ const Footer = () => {
           <Link className="link link-hover">Terms of use</Link>
           <Link className="link link-hover">Privacy policy</Link>
           <Link className="link link-hover">Cookie policy</Link>
+        </div>
+        <div>
+          <span className="flex items-center font-semibold">Send Email to know anything <FaArrowDown className="ml-2 text-orange-200"></FaArrowDown></span>
+          <label className="input-group">
+                <span className="w-24 bg-orange-100 text-black font-semibold">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email@web.com"
+                  className="input input-bordered"
+                />
+              </label>
         </div>
       </footer>
       <footer className="footer px-10 py-4 border-t bg-gray-800 mx-auto w-9/12 text-white border-base-300">

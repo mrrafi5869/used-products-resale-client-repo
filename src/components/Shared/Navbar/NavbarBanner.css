@@ -13,7 +13,6 @@
 .my-logo{
     font-family: 'Metal Mania', cursive;
     letter-spacing: 3px;
-    color: red;
     font-size: 30px;
 }
 
@@ -22,6 +21,7 @@
 }
 
 .laptop{
-    background-color: orange;
+    /* background-color: black; */
     border-radius: 50px;
+    padding: 20px;
 }
