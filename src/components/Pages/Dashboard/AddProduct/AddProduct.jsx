@@ -6,21 +6,40 @@ import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate()
+  const imageHost = process.env.REACT_APP_IMGBB_KEY;
 
   const handleAddProduct = event => {
     event.preventDefault();
     const form = event.target;
-    const ProductName = form.name.value;
+    const productName = form.name.value;
     const phone = form.phone.value;
+    const image = form.image.files[0];
     const condition = form.condition.value;
     const location = form.location.value;
     const OPrice = form.OPrice.value;
     const RPrice = form.RPrice.value;
     const used = form.used.value;
-    const addProduct = {
-        email: user.displayName,
-        name: ProductName,
+
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageHost}`
+
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      const upImg = data.data.display_url;
+      addProductInDb(upImg)
+    })
+
+    const addProductInDb = (upImg) => {
+      const addProduct = {
+        email: user.email,
+        name: user.displayName,
+        productName: productName,
+        img: upImg,
         phone,
         location,
         condition,
@@ -28,7 +47,8 @@ const AddProduct = () => {
         resalePrice: RPrice,
         used
     }
-    fetch("http://localhost:5000/addProduct", {
+
+      fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: {
             'content-type': "application/json"
@@ -39,25 +59,27 @@ const AddProduct = () => {
     .then(data => {
         if(data.acknowledged){
           toast.success('Your product is added');
-          navigate('/')
+          form.reset();
         }
     })
+    }
   }
 
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-[500px]">
-          <form className="card-body">
+          <form onSubmit={handleAddProduct} className="card-body">
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Product Name</span>
+                <span className="label-text">Car Name</span>
               </label>
               <input
                 type="text"
-                name="product"
+                name="name"
                 placeholder="Product Name"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -69,16 +91,25 @@ const AddProduct = () => {
                 name="phone"
                 placeholder="Phone Number"
                 className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text flex items-center"> Car Photo<FaPhone className="ml-2"></FaPhone></span>
+              </label>
+              <input
+                type="file"
+                name="image"
+                className="input input-bordered"
+                required
               />
             </div>
             <div className="my-1">
                 <span className="font-semibold flex items-center mb-4">
-                Category{" "}
+                Select a Category{" "}
                 </span>
-                <select className="select select-bordered w-full" name="location">
-                <option disabled selected>
-                    Select a Category
-                </option>
+                <select className="select select-bordered w-full" name="location" required>
                 <option>Toyota</option>
                 <option>Lamborghini</option>
                 <option>Ferrari</option>
@@ -89,9 +120,6 @@ const AddProduct = () => {
                 Condition{" "}
                 </span>
                 <select className="select select-bordered w-full" name="condition">
-                <option disabled selected>
-                    What's Your car Condition?
-                </option>
                 <option>Excellent</option>
                 <option>Good</option>
                 <option>Fair</option>
@@ -103,9 +131,6 @@ const AddProduct = () => {
                 Location{" "}
                 </span>
                 <select className="select select-bordered w-full" name="location">
-                <option disabled selected>
-                    Select your company location
-                </option>
                 <option>USA</option>
                 <option>UK</option>
                 <option>KSA</option>
@@ -121,9 +146,6 @@ const AddProduct = () => {
                 Market Price?{" "}
                 </span>
                 <select className="select select-bordered w-full" name="OPrice">
-                <option disabled selected>
-                    Price Range
-                </option>
                 <option>15000</option>
                 <option>20000</option>
                 <option>30000</option>
@@ -139,9 +161,6 @@ const AddProduct = () => {
                Resale price?{" "}
                 </span>
                 <select className="select select-bordered w-full" name="RPrice">
-                <option disabled selected>
-                    Price Range
-                </option>
                 <option>10000</option>
                 <option>15000</option>
                 <option>20000</option>
@@ -157,10 +176,6 @@ const AddProduct = () => {
                 Years of used{" "}
                 </span>
                 <select className="select select-bordered w-full" name="used">
-                <option disabled selected>
-                {/* USA", "UK", "KSA", "UAE", "India", "Bangladesh", "Pakistan */}
-                    How many ages of car
-                </option>
                 <option>1Year</option>
                 <option>2years</option>
                 <option>3Years</option>
@@ -169,7 +184,7 @@ const AddProduct = () => {
                 </select>
             </div>
             <div className="form-control mt-6">
-              <button onClick={handleAddProduct} className="btn bg-orange-100 text-black border-none hover:bg-orange-300">Add Now</button>
+              <button type="submit" className="btn bg-orange-100 text-black border-none hover:bg-orange-300">Add Now</button>
             </div>
           </form>
         </div>

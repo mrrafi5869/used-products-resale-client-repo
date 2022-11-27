@@ -4,8 +4,8 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 import BookingModal from "../BookingModal/BookingModal";
 
 const AllCarsInfo = ({singleProduct}) => {
-    const {id, img, name,condition, location, resalePrice, originalPrice, used} = singleProduct;
-    const {user, loading} = useContext(AuthContext);
+    const { img, name,condition, location, resalePrice, originalPrice, used } = singleProduct;
+    const { user } = useContext(AuthContext);
 
 
 
