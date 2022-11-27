@@ -7,9 +7,6 @@ const AllCarsInfo = ({singleProduct}) => {
     const {id, img, name,condition, location, resalePrice, originalPrice, used} = singleProduct;
     const {user} = useContext(AuthContext);
 
-    const handleBooking = id => {
-      
-    }
 
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -45,7 +42,7 @@ const AllCarsInfo = ({singleProduct}) => {
         <div className="stat-value text-sm">{originalPrice}</div>
       </div>
     </div>
-      <label onClick={() => handleBooking(id)} htmlFor="booking-modal" className="btn text-white rounded-b-md rounded-t-sm">Book Now</label>
+      <label htmlFor="booking-modal" className="btn text-white rounded-b-md rounded-t-sm">Book Now</label>
       <BookingModal
         img={img}
         name={name}

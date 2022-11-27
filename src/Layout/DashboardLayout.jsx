@@ -4,10 +4,14 @@ import Footer from "../components/Shared/Footer/Footer";
 import SharedNavbar from "../components/Shared/SharedNavbar";
 import { AuthContext } from "../contexts/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import useBuyer from "../hooks/useBuyer";
+import useSeller from "../hooks/useSeller";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
+  const [isSeller] = useSeller(user?.email);
 
   return (
     <>
@@ -28,12 +32,20 @@ const DashboardLayout = () => {
               className="drawer-overlay"
             ></label>
             <ul className="menu p-4 w-80 text-base-content">
-              <li>
-                <Link to="/dashboard">Add a Product</Link>
-              </li>
-              <li>
-                <Link to="/dashboard/myOrders">My Orders</Link>
-              </li>
+              {isSeller && (
+                <>
+                  <li>
+                    <Link to="/dashboard">Add a Product</Link>
+                  </li>
+                </>
+              )}
+              {isBuyer && (
+                <>
+                  <li>
+                    <Link to="/dashboard/myOrders">My Orders</Link>
+                  </li>
+                </>
+              )}
               {isAdmin && (
                 <>
                   <li>
