@@ -10,7 +10,7 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
 
   if (loading || isAdminLoading) {
-    return <div>
+    return <div className="mx-auto">
         <button className="btn btn-square loading"></button>
     </div>
   }
