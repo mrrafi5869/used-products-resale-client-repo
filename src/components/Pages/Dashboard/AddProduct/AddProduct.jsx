@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaMapMarkerAlt, FaMoneyBill, FaPhone } from "react-icons/fa";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
@@ -8,26 +9,35 @@ const AddProduct = () => {
   const handleAddProduct = event => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    const product = form.name.product;
+    const ProductName = form.name.value;
+    const phone = form.phone.value;
+    const condition = form.condition.value;
     const location = form.location.value;
     const OPrice = form.OPrice.value;
     const RPrice = form.RPrice.value;
     const used = form.used.value;
-    const add = {
-        name,
-        product
+    const addProduct = {
+        email: user.displayName,
+        name: ProductName,
+        phone,
+        location,
+        condition,
+        originalPrice: OPrice,
+        resalePrice: RPrice,
+        used
     }
     fetch("", {
         method: "POST",
         headers: {
             'content-type': "application/json"
         },
-        body: JSON.stringify()
+        body: JSON.stringify(addProduct)
     })
     .then(res => res.json())
     .then(data => {
-
+        if(data.acknowledged){
+          toast.success('Your product is added');
+        }
     })
   }
 
@@ -36,19 +46,6 @@ const AddProduct = () => {
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 shadow-2xl bg-base-100 w-[500px]">
           <form className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Seller Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                defaultValue={user?.displayName}
-                disabled
-                className="input input-bordered text-xl font-semibold"
-              />
-            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Product Name</span>
@@ -88,7 +85,7 @@ const AddProduct = () => {
                 <span className="font-semibold flex items-center mb-4">
                 Condition{" "}
                 </span>
-                <select className="select select-bordered w-full" name="location">
+                <select className="select select-bordered w-full" name="condition">
                 <option disabled selected>
                     What's Your car Condition?
                 </option>

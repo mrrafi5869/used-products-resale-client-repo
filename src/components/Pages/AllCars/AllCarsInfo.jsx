@@ -5,7 +5,8 @@ import BookingModal from "../BookingModal/BookingModal";
 
 const AllCarsInfo = ({singleProduct}) => {
     const {id, img, name,condition, location, resalePrice, originalPrice, used} = singleProduct;
-    const {user} = useContext(AuthContext);
+    const {user, loading} = useContext(AuthContext);
+
 
 
   return (

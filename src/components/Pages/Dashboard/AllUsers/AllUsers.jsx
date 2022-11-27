@@ -43,7 +43,7 @@ const AllUsers = () => {
                     <th>{index + 1}</th>
                     <td>
                       <div className="avatar">
-                        <div className="w-24 rounded-full">
+                        <div className="w-12 rounded-full">
                           <img src={user.img} alt="" />
                         </div>
                       </div>

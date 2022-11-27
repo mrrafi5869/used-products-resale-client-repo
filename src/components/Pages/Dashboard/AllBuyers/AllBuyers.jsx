@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
 const AllBuyers = () => {
-
     const {data: allBuyers = [], refetch} = useQuery({
         queryKey: "allBuyers",
         queryFn: async () => {

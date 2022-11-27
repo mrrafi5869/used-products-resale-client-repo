@@ -35,16 +35,17 @@ const DashboardLayout = () => {
               {isSeller && (
                 <>
                   <li>
-                    <Link to="/dashboard">Add a Product</Link>
+                    <Link to='/dashboard/addProduct'>Add a Product</Link>
+                  </li>
+                  <li>
+                    <Link to="/dashboard/myBuyers">My Buyers</Link>
                   </li>
                 </>
               )}
               {isBuyer && (
-                <>
-                  <li>
-                    <Link to="/dashboard/myOrders">My Orders</Link>
-                  </li>
-                </>
+                <li>
+                  <Link to="/dashboard/myOrders">My Orders</Link>
+                </li>
               )}
               {isAdmin && (
                 <>

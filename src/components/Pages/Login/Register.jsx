@@ -22,7 +22,7 @@ const Register = () => {
     const form = event.target;
     const email = form.email.value;
     const name = form.name.value;
-    const user = topping;
+    const role = topping;
     const password = form.password.value;
     const image = form.image.files[0];
     const formData = new FormData();
@@ -40,7 +40,7 @@ const Register = () => {
       emailLogin(email, password)
     .then(result => {
       console.log(result.user);
-      handleUpdateProfile(name, email, user, upImg);
+      handleUpdateProfile(name, email, role, upImg);
       navigate('/');
     })
     .catch(err => console.error(err));
@@ -60,23 +60,23 @@ const Register = () => {
     .catch(err => console.error(err));
   };
 
-  const handleUpdateProfile = (name, email, user, upImg) => {
+  const handleUpdateProfile = (name, email, role, upImg) => {
     const profile = {
       photoURL: upImg,
       displayName: name,
     }
     updateUser(profile)
     .then(() => {
-      saveUser(name, email, user, upImg)
+      saveUser(name, email, role, upImg)
     })
     .catch(err => console.error(err));
   }
 
-  const saveUser = (name, email, user, upImg) => {
+  const saveUser = (name, email, role, upImg) => {
     const userInfo = {
       name,
       email,
-      user,
+      role,
       img: upImg
     }
     fetch('http://localhost:5000/user', {

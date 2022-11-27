@@ -22,30 +22,31 @@ const Blog = () => {
             <div>
                 <h1 className='text-2xl'>Q:4 <br />React vs. Angular vs. Vue?</h1>
                 <p>Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option.</p>
-                <table>
-                    <tr>
-                        <th>React</th>
-                        <th>Angular</th>
-                        <th>Vue</th>
+                <table className='btable'>
+                    <tr className='btr'>
+                        <th className='bth'>React</th>
+                        <th className='bth'>Angular</th>
+                        <th className='bth'>Vue</th>
                     </tr>
-                    <tr>
-                        <td>React is a JavaScript library</td>
-                        <td>Angular is a front-end framework</td>
-                        <td> Vue. js enables writing with JSX, but the components are written with HTML templates</td>
+                    <tr className='btr'>
+                        <td className='btd'>React is a JavaScript library</td>
+                        <td className='btd'>Angular is a front-end framework</td>
+                        <td className='btd'> Vue. js enables writing with JSX, but the components are written with HTML templates</td>
                     </tr>
-                    <tr>
-                        <td>React uses one-way data binding and virtual DOM</td>
-                        <td>Angular uses two-way data binding and real DOM</td>
-                        <td>Vue provides higher customizability and hence is easier to learn than Angular or React.</td>
+                    <tr className='btr'>
+                        <td className='btd'>React uses one-way data binding and virtual DOM</td>
+                        <td className='btd'>Angular uses two-way data binding and real DOM</td>
+                        <td className='btd'>Vue provides higher customizability and hence is easier to learn than Angular or React.</td>
                     </tr>
-                    <tr>
-                        <td>React requires solid JavaScript skills</td>
-                        <td>Angular is Lower than React</td>
-                        <td>Vue. js is more oriented to novice developers.</td>
+                    <tr className='btr'>
+                        <td className='btd'>React requires solid JavaScript skills</td>
+                        <td className='btd'>Angular is Lower than React</td>
+                        <td className='btd'>Vue. js is more oriented to novice developers.</td>
                     </tr>
                 </table>
             </div>
         </div>
+
     );
 };
 
