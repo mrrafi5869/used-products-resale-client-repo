@@ -6,6 +6,7 @@ import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const imageHost = process.env.REACT_APP_IMGBB_KEY;
 
   const handleAddProduct = event => {
@@ -32,6 +33,7 @@ const AddProduct = () => {
     .then(data => {
       const upImg = data.data.display_url;
       addProductInDb(upImg)
+      navigate("/dashboard/myProducts")
     })
 
     const addProductInDb = (upImg) => {

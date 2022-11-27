@@ -12,6 +12,7 @@ import ErrorPage from "../components/Pages/ErrorPage/ErrorPage";
 import Home from "../components/Pages/Home/Home/Home";
 import Login from "../components/Pages/Login/Login";
 import Register from "../components/Pages/Login/Register";
+import MyProducts from "../components/Pages/MyProducts/MyProducts";
 import PrivateRoute from "../components/Pages/PrivateRoute/PrivateRoute";
 import SellerRoute from "../components/Pages/SellerRoute/SellerRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
                 {
                     path: "/dashboard/addProduct",
                     element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+                },
+                {
+                    path: "/dashboard/myProducts",
+                    element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
                 },
                 {
                     path: '/dashboard/myOrders',

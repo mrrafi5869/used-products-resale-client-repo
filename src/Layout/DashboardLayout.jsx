@@ -14,9 +14,9 @@ const DashboardLayout = () => {
   const [isSeller] = useSeller(user?.email);
 
   return (
-    <>
+    <div>
       <SharedNavbar></SharedNavbar>
-      <div className="w-9/12 mx-auto">
+      <div className="w-9/12 mx-auto mb-10">
         <div className="drawer drawer-mobile">
           <input
             id="dashboard-drawer"
@@ -34,28 +34,31 @@ const DashboardLayout = () => {
             <ul className="menu p-4 w-80 text-base-content">
               {isSeller && (
                 <>
-                  <li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                     <Link to='/dashboard/addProduct'>Add a Product</Link>
                   </li>
-                  <li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
+                    <Link to="/dashboard/myProducts">My Products</Link>
+                  </li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                     <Link to="/dashboard/myBuyers">My Buyers</Link>
                   </li>
                 </>
               )}
               {isBuyer && (
-                <li>
+                <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                   <Link to="/dashboard/myOrders">My Orders</Link>
                 </li>
               )}
               {isAdmin && (
                 <>
-                  <li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                     <Link to="/dashboard/allSellers">All Sellers</Link>
                   </li>
-                  <li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                     <Link to="/dashboard/allBuyers">All Buyers</Link>
                   </li>
-                  <li>
+                  <li className="bg-orange-200 mb-3 rounded-l-md font-semibold hover:bg-gray-300 hover:text-white">
                     <Link to="/dashboard/allUsers">All Users</Link>
                   </li>
                 </>
@@ -65,7 +68,7 @@ const DashboardLayout = () => {
         </div>
       </div>
       <Footer></Footer>
-    </>
+    </div>
   );
 };
 
