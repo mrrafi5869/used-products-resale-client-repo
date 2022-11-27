@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { FaMapMarkerAlt, FaMoneyBill, FaPhone } from "react-icons/fa";
+import { useNavigate } from "react-router-dom/dist";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const handleAddProduct = event => {
     event.preventDefault();
@@ -26,7 +28,7 @@ const AddProduct = () => {
         resalePrice: RPrice,
         used
     }
-    fetch("", {
+    fetch("http://localhost:5000/addProduct", {
         method: "POST",
         headers: {
             'content-type': "application/json"
@@ -37,6 +39,7 @@ const AddProduct = () => {
     .then(data => {
         if(data.acknowledged){
           toast.success('Your product is added');
+          navigate('/')
         }
     })
   }
