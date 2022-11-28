@@ -5,7 +5,7 @@ const CarCategories = () => {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/carCategories")
+    fetch("https://used-products-resale-server-pied.vercel.app/carCategories")
       .then((res) => res.json())
       .then((data) => {
         setCars(data);

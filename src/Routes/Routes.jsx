@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
             {
                 path: '/allCars/:id',
                 element: <AllCars></AllCars>,
-                loader: ({params}) => fetch(`http://localhost:5000/allCars/${params.id}`)
+                loader: ({params}) => fetch(`https://used-products-resale-server-pied.vercel.app/allCars/${params.id}`)
             },
         ]
     },
@@ -80,7 +80,7 @@ export const router = createBrowserRouter([
                 {
                     path: "/dashboard/payment/:id",
                     element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                    loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
+                    loader: ({params}) => fetch(`https://used-products-resale-server-pied.vercel.app/bookings/${params.id}`)
                 },
                 
             ]            

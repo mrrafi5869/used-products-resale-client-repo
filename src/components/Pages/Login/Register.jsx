@@ -79,7 +79,7 @@ const Register = () => {
       role,
       img: upImg
     }
-    fetch('http://localhost:5000/user', {
+    fetch('https://used-products-resale-server-pied.vercel.app/user', {
       method: "POST",
       headers: {
         'content-type': 'application/json'

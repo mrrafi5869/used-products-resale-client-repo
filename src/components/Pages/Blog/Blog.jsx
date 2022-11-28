@@ -6,7 +6,7 @@ const Blog = () => {
         <div className='w-9/12 mx-auto my-16'>
             <div>
                 <h1 className='text-2xl'>Q:1 <br />What are the different ways to manage a state in a React application?</h1>
-                <p>1. Local state</p>
+                <p>1. https://used-products-resale-server-pied.vercel.app/ state</p>
                 <p>2. URL state</p>
                 <p>3. Server state</p>
                 <p>4. Global state</p>

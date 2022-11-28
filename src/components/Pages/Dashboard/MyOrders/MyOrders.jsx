@@ -6,7 +6,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const MyOrders = () => {
     const {user} = useContext(AuthContext);
-    const url = `http://localhost:5000/myOrders?email=${user?.email}`;
+    const url = `https://used-products-resale-server-pied.vercel.app/myOrders?email=${user?.email}`;
     const {data: myOrders = [], refetch} = useQuery({
         queryKey: ["myOrders", user?.email],
         queryFn: async () => {
@@ -17,7 +17,7 @@ const MyOrders = () => {
     })
 
     const handleDeleteUser = id => {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://used-products-resale-server-pied.vercel.app/order/${id}`, {
           method: "DELETE",
         })
         .then(res => res.json())

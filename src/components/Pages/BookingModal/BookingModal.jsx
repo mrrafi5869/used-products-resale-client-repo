@@ -22,7 +22,7 @@ const BookingModal = ({ data, setData }) => {
             phone,
             email
         }
-        fetch('http://localhost:5000/bookingCar',{
+        fetch('https://used-products-resale-server-pied.vercel.app/bookingCar',{
             method: "POST",
             headers: {
                 "content-type": 'application/json'
