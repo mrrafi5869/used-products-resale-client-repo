@@ -49,7 +49,7 @@ const AddProduct = () => {
         resalePrice: RPrice,
         used
     }
-    console.log(addProduct);
+    console.log(addProduct.img);
 
       fetch("http://localhost:5000/addProduct", {
         method: "POST",

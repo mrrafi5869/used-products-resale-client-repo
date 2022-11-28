@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const BookingModal = ({singleProduct, data, setData}) => {
-    const { name, location, resalePrice} = data
+const BookingModal = ({ data, setData }) => {
+    const { img, name, location, resalePrice} = data
 
     const {user} = useContext(AuthContext);
     const handleBooking = event => {
@@ -15,6 +15,7 @@ const BookingModal = ({singleProduct, data, setData}) => {
         const singleLocation = form.singleLocation.value;
         const phone = form.phone.value;
         const booking = {
+            img,
             name,
             price,
             location: singleLocation,
@@ -61,7 +62,7 @@ const BookingModal = ({singleProduct, data, setData}) => {
             <input
               type="text"
               name='price'
-              value={"Price: "+ resalePrice}
+              value={resalePrice}
               disabled
               className="input w-full input-bordered"
             />

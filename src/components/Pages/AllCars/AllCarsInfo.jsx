@@ -4,7 +4,6 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const AllCarsInfo = ({singleProduct, setData}) => {
     const { img, name,condition, location, resalePrice, originalPrice, used } = singleProduct;
-    
     const { user } = useContext(AuthContext);
 
 

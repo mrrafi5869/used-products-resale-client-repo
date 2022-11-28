@@ -1,9 +1,11 @@
 // import { HandThumbDownIcon } from '@heroicons/react/24/solid'
 import React from 'react'
-import { FaBackspace, FaBackward, FaUndo } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { FaUndo } from 'react-icons/fa'
+import { Link, useRouteError } from 'react-router-dom'
 
 const ErrorPage = () => {
+  const error = useRouteError();
+
   return (
     <section className='flex items-center h-screen p-16 bg-gray-100 text-gray-900'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto my-8'>
@@ -17,8 +19,8 @@ const ErrorPage = () => {
               4
             </div>
           </h2>
-          <p className='text-2xl font-semibold md:text-3xl mb-8'>
-            Sorry, The Name is invalid
+          <p className='text-2xl font-semibold md:text-3xl mb-8 text-red-500'>
+            {error.statusText || error.message}
           </p>
           <Link to='/'>
             <button className='btn bg-gradient-to-r from-cyan-500 to-green-500 border-none px-8 py-3 font-semibold rounded'>
