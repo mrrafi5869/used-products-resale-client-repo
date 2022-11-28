@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const BookingModal = ({name, location, resalePrice}) => {
+const BookingModal = ({singleProduct, data, setData}) => {
+    const { name, location, resalePrice} = data
+
     const {user} = useContext(AuthContext);
     const handleBooking = event => {
         event.preventDefault();
@@ -30,6 +32,7 @@ const BookingModal = ({name, location, resalePrice}) => {
         .then(data => {
             console.log(data);
             if(data.acknowledged){
+              setData(null);
                 toast.success(`Thanks for ordered the ${name}.You will get it in 7 Days.`)
             }
         })

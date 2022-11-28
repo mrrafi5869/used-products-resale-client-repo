@@ -42,18 +42,18 @@ const MyOrders = () => {
                   </thead>
                   <tbody>
                       {
-                          myOrders?.map((seller, index) => <tr key={seller._id}>
+                          myOrders?.map((myOrder, index) => <tr key={myOrder._id}>
                               <th>{index + 1}</th>
                               <td>
                                 <div className="avatar">
                                   <div className="w-24 rounded-full">
-                                    <img src={seller.img} alt="" />
+                                    <img src={myOrder.img} alt="" />
                                   </div>
                                 </div>
                               </td>
-                              <td>{seller.name}</td>
-                              <td>{seller.email}</td>
-                              <td><button onClick={() => handleDeleteUser(seller._id)} className="btn btn-xs btn-danger"><FaTrash></FaTrash></button></td>
+                              <td>{myOrder.name}</td>
+                              <td>{myOrder.email}</td>
+                              <td><button onClick={() => handleDeleteUser(myOrder._id)} className="btn btn-xs btn-danger"><FaTrash></FaTrash></button></td>
                             </tr>
                             )
                       }

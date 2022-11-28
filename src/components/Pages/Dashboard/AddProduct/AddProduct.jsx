@@ -49,6 +49,7 @@ const AddProduct = () => {
         resalePrice: RPrice,
         used
     }
+    console.log(addProduct);
 
       fetch("http://localhost:5000/addProduct", {
         method: "POST",
@@ -111,7 +112,7 @@ const AddProduct = () => {
                 <span className="font-semibold flex items-center mb-4">
                 Select a Category{" "}
                 </span>
-                <select className="select select-bordered w-full" name="location" required>
+                <select className="select select-bordered w-full" name="brand" required>
                 <option>Toyota</option>
                 <option>Lamborghini</option>
                 <option>Ferrari</option>

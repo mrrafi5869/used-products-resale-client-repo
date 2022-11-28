@@ -11,13 +11,18 @@ const ProductCard = ({productData}) => {
         <img src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
+        <div className='flex justify-between items-center'>
         <h2 className="card-title">
           {productName}
         </h2>
+        <button className="btn btn-outline btn-info btn-xs">Advertise</button>
+        </div>
         <h2 className="text-2xl font-semibold font-sans">Seller: {user?.displayName}</h2>
         <p className="text-xl font-semibold">Condition: {condition}</p>
-        <span className="font-semibold flex items-center"><FaMapMarkerAlt className="mr-2 text-blue-400"></FaMapMarkerAlt>Location </span>
+        <div className='flex items-center'>
+        <span className="font-semibold flex items-center mr-2"><FaMapMarkerAlt className="mr-2 text-blue-400"></FaMapMarkerAlt>Location: </span>
         <p>{location}</p>
+        </div>
       </div>
       <div className="flex stats shadow bg-lime-50 rounded-sm">
       <div className="stat place-items-center text-sm">

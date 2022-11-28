@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { FaMapMarkerAlt } from 'react-icons/fa';
 import { AuthContext } from "../../../contexts/AuthProvider";
-import BookingModal from "../BookingModal/BookingModal";
 
-const AllCarsInfo = ({singleProduct}) => {
+const AllCarsInfo = ({singleProduct, setData}) => {
     const { img, name,condition, location, resalePrice, originalPrice, used } = singleProduct;
+    
     const { user } = useContext(AuthContext);
 
 
@@ -12,7 +12,7 @@ const AllCarsInfo = ({singleProduct}) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img src={img} alt="Shoes" />
+        <img src={img} alt="" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -43,13 +43,8 @@ const AllCarsInfo = ({singleProduct}) => {
         <div className="stat-value text-sm">{originalPrice}</div>
       </div>
     </div>
-      <label htmlFor="booking-modal" className="btn text-white rounded-b-md rounded-t-sm">Book Now</label>
-      <BookingModal
-        img={img}
-        name={name}
-        location={location}
-        resalePrice={resalePrice}
-      ></BookingModal>
+      <label onClick={() => setData(singleProduct)}  htmlFor="booking-modal" className="btn text-white rounded-b-md rounded-t-sm">Book Now</label>
+      
     </div>
   );
 };

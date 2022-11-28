@@ -4,6 +4,7 @@ import Info from '../Info/Info';
 import Navbar from '../../../Shared/Navbar/Navbar'
 import FindCar from '../FindCar/FindCar';
 import CarCategories from '../CarCategories/CarCategories';
+import ProductSlider from '../ProductSlider/ProductSlider';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Navbar></Navbar>
             <FindCar></FindCar>
             <CarCategories></CarCategories>
+            <ProductSlider></ProductSlider>
             <CarAccessories></CarAccessories>
             <Info></Info>
         </div>

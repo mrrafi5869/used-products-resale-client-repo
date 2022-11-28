@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import BookingModal from '../BookingModal/BookingModal';
 import AllCarsInfo from './AllCarsInfo';
 
 const AllCars = () => {
     const { products } = useLoaderData();
     const {loading} = useContext(AuthContext);
-    
+    const [data, setData] = useState(null);
     if (loading) {
         return (
           <div className="flex justify-center my-96">
@@ -20,7 +21,16 @@ const AllCars = () => {
                 products?.map(singleProduct => <AllCarsInfo
                     key={singleProduct._id}
                     singleProduct={singleProduct}
+                    setData={setData}
+                    data={data}
                 ></AllCarsInfo>)
+            }
+            {
+              data && 
+              <BookingModal
+              setData={setData}
+              data={data}
+      ></BookingModal>
             }
         </div>
     );
