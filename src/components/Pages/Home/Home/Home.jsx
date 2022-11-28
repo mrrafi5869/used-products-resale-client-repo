@@ -12,7 +12,6 @@ const Home = () => {
             <Navbar></Navbar>
             <FindCar></FindCar>
             <CarCategories></CarCategories>
-            <ProductSlider></ProductSlider>
             <CarAccessories></CarAccessories>
             <Info></Info>
         </div>
