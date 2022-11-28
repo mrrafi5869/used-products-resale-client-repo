@@ -1,0 +1,61 @@
+import React, { useState } from 'react';
+import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
+
+
+const CheckOutForm = ({booking}) => {
+  const [cardError, setCardError] = useState('');
+  const stripe = useStripe();
+  const elements = useElements();
+  const {price} = booking;
+  
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+    if(!stripe || !elements){
+      return
+    }
+    const card = elements.getElement(CardElement);
+
+    if(card === null){
+      return;
+    }
+    const {error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card
+    })
+
+    if(error){
+      setCardError(error.message);
+    }
+    else{
+      setCardError("");
+    }
+  }
+    return (
+        <>
+          <form onSubmit={handleSubmit}>
+      <CardElement
+        options={{
+          style: {
+            base: {
+              fontSize: '16px',
+              color: '#424770',
+              '::placeholder': {
+                color: '#aab7c4',
+              },
+            },
+            invalid: {
+              color: '#9e2146',
+            },
+          },
+        }}
+      />
+      <button className='btn btn-primary mt-5 btn-sm' type="submit" disabled={!stripe}>
+        Pay
+      </button>
+    </form>
+    <p className='text-red-500'>{cardError}</p>
+        </>
+    );
+};
+
+export default CheckOutForm;

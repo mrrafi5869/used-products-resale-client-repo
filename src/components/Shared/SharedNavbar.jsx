@@ -59,6 +59,9 @@ const SharedNavbar = () => {
                   <li>
                 <Link onClick={handleLogOut} className="hover:bg-black hover:text-white text-black font-semibold" to='/login'>LogOut</Link>
               </li>
+                  <li>
+                <img src={user?.photoURL} className='w-16' alt="" />
+              </li>
                 </>
               :
               <li>
