@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { toast } from 'react-hot-toast';
 import { FaTrash } from 'react-icons/fa';
 
 const AllSellers = () => {
@@ -19,8 +20,8 @@ const AllSellers = () => {
         })
         .then(res => res.json())
         .then(data => {
-
           refetch();
+          toast.success("Delete This Seller");
         })
     }
     return (

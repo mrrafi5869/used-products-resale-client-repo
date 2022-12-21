@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { FaTrash } from 'react-icons/fa';
 
 const AllBuyers = () => {
@@ -21,6 +22,7 @@ const AllBuyers = () => {
         .then(data => {
           console.log(data);
           refetch();
+          toast.success("Delete This Buyer");
         })
     }
 

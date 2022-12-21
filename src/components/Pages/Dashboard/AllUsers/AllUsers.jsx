@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 import { FaTrash } from 'react-icons/fa';
 
 const AllUsers = () => {
@@ -19,6 +20,7 @@ const AllUsers = () => {
         .then(data => {
           console.log(data);
           refetch();
+          toast.success("Delete This User");
         })
     }
 
