@@ -3,16 +3,16 @@ import './FindCar.css'
 
 const FindCar = () => {
     return (
-        <div className='bg-white shadow-md w-9/12 p-10 mx-auto my-36'>
+        <div className='bg-white shadow-md lg:w-9/12 p-3 lg:p-10 mx-auto my-36'>
             <div className='flex justify-between'>
-                <h1 className='text-3xl find-car'>Find Your Car</h1>
-                <p className='font-semibold amount'><span className='text-2xl text-red-500'>1200</span> Available</p>
+                <h1 className='text-xl md:text-3xl find-car'>Find Your Car</h1>
+                <p className='font-semibold amount'><span className='text-xl md:text-2xl text-red-500'>1200</span> Available</p>
             </div>
             <ul className='border-solid border-2 border-gray-500 my-7'></ul>
-            <div className='flex justify-around text-gray-400 mb-16'>
+            <div className='lg:flex justify-around text-gray-400 mb-16'>
                 <div>
                     <span>Car Condition</span>
-                    <select className="select w-full max-w-xs bordered select-bordered rounded-none">
+                    <select className="select w-full bordered select-bordered rounded-none">
                         <option disabled selected>Pick a Condition</option>
                         <option>90%</option>
                         <option>85%</option>

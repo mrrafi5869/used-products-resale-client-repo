@@ -9,7 +9,7 @@ const AllCarsInfo = ({singleProduct, setData}) => {
 
 
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-72 md:w-96 bg-base-100 shadow-xl">
       <figure>
         <img src={img} alt="" />
       </figure>

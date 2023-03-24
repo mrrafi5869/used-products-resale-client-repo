@@ -2,9 +2,9 @@ import React from "react";
 
 const Info = () => {
   return (
-    <div className="w-9/12 mx-auto">
+    <div className="lg:w-9/12 mx-auto">
       <p className="font-bold text-3xl uppercase text-center">Our <span className="text-blue-500">Car's</span> Information</p>
-      <div className="flex stats shadow my-12 w-9/12 mx-auto">
+      <div className="flex stats shadow my-12 lg:w-9/12 mx-auto">
       <div className="stat place-items-center">
         <div className="stat-title">Available</div>
         <div className="stat-value">1200</div>

@@ -46,14 +46,14 @@ const CarAccessories = () => {
         },
     ]
     return (
-        <div className='my-52 w-9/12 mx-auto'>
-            <h1 className='text-3xl font-bold uppercase mb-24 text-center'><span className='text-blue-500'>Car</span> Accessories</h1>
-        <div className='grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-5'>
+        <div className='my-6 md:my-52 md:w-9/12 mx-auto'>
+            <h1 className='text-3xl font-bold uppercase mb-8 md:mb-24 text-center'><span className='text-blue-500'>Car</span> Accessories</h1>
+        <div className='grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-5 p-2'>
                 {
                     parts.map(part => <div key={part.id}>
-                        <img className='w-20 mx-auto mb-5' src={part.img} alt="" />
+                        <img className='w-20 md:mx-auto mb-5' src={part.img} alt="" />
                         <h3 className='text-1xl font-bold'>{part.name}</h3>
-                        <p className='text-gray-500'>{part.desc}</p>
+                        <p className='text-gray-500 text-justify'>{part.desc}</p>
                     </div>)
                 }
             </div>
