@@ -3,8 +3,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookingModal = ({ data, setData }) => {
-    const { img, name, location, resalePrice} = data
-
+    const { img, name, location, resalePrice} = data;
     const {user} = useContext(AuthContext);
     const handleBooking = event => {
         event.preventDefault();

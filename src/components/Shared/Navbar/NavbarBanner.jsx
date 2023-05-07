@@ -1,6 +1,6 @@
 import React from "react";
 import './NavbarBanner.css';
-import laptop from '../../../images/laptop.png';
+import laptop from '../../../images/laptop1.png';
 
 const NavbarBanner = ({ imageData }) => {
   const { image, prev, id, next } = imageData;
@@ -16,7 +16,7 @@ const NavbarBanner = ({ imageData }) => {
         </h2>
       </div>
       <div className="absolute flex justify-start transform -translate-y-1/2 left-1/3 top-3/4 w-2/5">
-        <img className="mx-auto rounded-xl md:p-5" src={laptop} alt="" />
+        <img className="mx-auto rounded-xl" src={laptop} alt="" />
       </div>
       <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 bottom-0">
         <a href={`#slide${prev}`} className="btn btn-sm md:btn-md btn-circle mr-5">

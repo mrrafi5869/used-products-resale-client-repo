@@ -83,9 +83,10 @@ const SharedNavbar = () => {
             )}
           </ul>
         </div>
-        <Link className="my-logo text-blue-500" to="/">
+        <Link className="my-logo text-blue-500 mr-5" to="/">
           AutoParts
         </Link>
+        <input type="text" placeholder="Search Car" className="input input-bordered w-full max-w-xs" />
       </div>
       <div className="navbar-center hidden lg:flex"></div>
       <div className="navbar-end">
